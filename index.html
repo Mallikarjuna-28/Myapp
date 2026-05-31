@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudNova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #020617, #0f172a, #0c4a6e);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    nav a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #d1d5db;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 12px;
+      background: #0ea5e9;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: 0 10px 30px rgba(14,165,233,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #38bdf8;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 8%;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: #0ea5e9;
+      filter: blur(180px);
+      opacity: 0.2;
+      border-radius: 50%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 72px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #cbd5e1;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #cbd5e1;
+    }
+
+    .features,
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 35px;
+      border-radius: 24px;
+      transition: 0.4s;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #38bdf8;
+      box-shadow: 0 15px 40px rgba(56,189,248,0.15);
+    }
+
+    .card h3 {
+      margin: 20px 0 15px;
+      font-size: 28px;
+    }
+
+    .card p {
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .icon {
+      font-size: 42px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: #cbd5e1;
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .about-boxes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .box {
+      height: 180px;
+      border-radius: 24px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .box:nth-child(1) {
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    }
+
+    .box:nth-child(2) {
+      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      margin-top: 40px;
+    }
+
+    .box:nth-child(3) {
+      background: linear-gradient(135deg, #f97316, #ef4444);
+    }
+
+    .box:nth-child(4) {
+      background: linear-gradient(135deg, #10b981, #22c55e);
+      margin-top: 40px;
+    }
+
+    @keyframes float {
+      0%,100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .cta {
+      text-align: center;
+      background: rgba(14,165,233,0.1);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cta h2 {
+      font-size: 54px;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      margin-bottom: 35px;
+      font-size: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #94a3b8;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .section-title h2,
+      .about-text h2,
+      .cta h2 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">CloudNova</div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+<h1>This is my ci cd</h1>
+  <section class="hero" id="home">
+    <div class="hero-content reveal">
+      <h1>Build Modern <span>Cloud Solutions</span></h1>
+      <p>
+        Beautiful, scalable, and fast digital experiences crafted for startups,
+        businesses, and future innovators.
+      </p>
+
+      <a href="#services" class="btn">Explore Services</a>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="section-title reveal">
+      <h2>Why Choose Us?</h2>
+      <p>Powerful solutions built with modern technologies.</p>
+    </div>
+
+    <div class="features">
+      <div class="card reveal">
+        <div class="icon">⚡</div>
+        <h3>Fast Performance</h3>
+        <p>
+          Optimized applications and cloud infrastructure for blazing-fast speed.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">🔒</div>
+        <h3>Secure Systems</h3>
+        <p>
+          Enterprise-level security with reliable and scalable architecture.
+        </p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon">☁️</div>
+        <h3>Cloud Powered</h3>
+        <p>
+          Deploy and scale globally with modern cloud-native technologies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about">
+      <div class="about-text reveal">
+        <h2>Modern Experiences for Digital Businesses</h2>
+        <p>
+          We build elegant cloud-powered platforms using the latest technologies.
+          Our mission is to help businesses launch faster and scale globally.
+        </p>
+
+        <a href="#contact" class="btn">Learn More</a>
+      </div>
+
+      <div class="about-boxes reveal">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-title reveal">
+      <h2>Our Services</h2>
+      <p>Innovative solutions tailored for modern digital platforms.</p>
+    </div>
+
+    <div class="services">
+      <div class="card reveal">
+        <h3>Web Development</h3>
+        <p>Responsive and modern websites built for performance and growth.</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Cloud Deployment</h3>
+        <p>Deploy applications securely on scalable cloud infrastructure.</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>UI/UX Design</h3>
+        <p>Beautiful interfaces crafted to enhance user experiences.</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>DevOps Automation</h3>
+        <p>Automate workflows and deployments for better productivity.</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>AI Integration</h3>
+        <p>Smart AI-powered solutions integrated into modern applications.</p>
+      </div>
+
+      <div class="card reveal">
+        <h3>Database Management</h3>
+        <p>Reliable and secure data management for scalable systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta reveal" id="contact">
+    <h2>Ready to Launch Your Project?</h2>
+    <p>
+      Build modern cloud-powered experiences that scale globally.
+    </p>
+
+    <a href="#home" class="btn">Start Now</a>
+  </section>
+
+  <footer>
+    <p>© 2026 CloudNova. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    function revealOnScroll() {
+      const windowHeight = window.innerHeight;
+
+      reveals.forEach((element) => {
+        const revealTop = element.getBoundingClientRect().top;
+
+        if (revealTop < windowHeight - 100) {
+          element.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+
+</body>
+</html>
