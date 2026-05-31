@@ -3,85 +3,431 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mallikarjuna Reddy | Portfolio</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Gaddam Mallikarjuna Reddy | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
+
+.navbar{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(10px);
+    background:rgba(15,23,42,0.8);
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight:700;
+    color:#38bdf8;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#38bdf8;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 20px;
+    background:
+    radial-gradient(circle at top left,#2563eb33,transparent 40%),
+    radial-gradient(circle at bottom right,#9333ea33,transparent 40%);
+}
+
+.hero-content h1{
+    font-size:4rem;
+    margin-bottom:15px;
+}
+
+.hero-content span{
+    color:#38bdf8;
+}
+
+.hero-content h3{
+    font-size:1.5rem;
+    color:#cbd5e1;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+    color:#94a3b8;
+}
+
+.btn-group{
+    margin-top:30px;
+}
+
+.btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    margin:10px;
+    display:inline-block;
+    transition:0.3s;
+}
+
+.primary{
+    background:#38bdf8;
+    color:#0f172a;
+}
+
+.secondary{
+    border:2px solid #38bdf8;
+    color:#38bdf8;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+section{
+    padding:90px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:50px;
+    color:#38bdf8;
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:40px;
+    align-items:center;
+}
+
+.profile-card{
+    background:#1e293b;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.profile-circle{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    margin:auto;
+    background:linear-gradient(135deg,#38bdf8,#8b5cf6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:3rem;
+    font-weight:bold;
+}
+
+.about-text{
+    color:#cbd5e1;
+    line-height:1.9;
+}
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.skill{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.skill:hover{
+    transform:translateY(-8px);
+}
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.project-card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+}
+
+.project-card h3{
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+.project-card p{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+.certifications{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.cert{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact-links{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.contact-links a{
+    text-decoration:none;
+    color:white;
+    background:#1e293b;
+    padding:15px 25px;
+    border-radius:50px;
+    transition:0.3s;
+}
+
+.contact-links a:hover{
+    background:#38bdf8;
+    color:#0f172a;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#94a3b8;
+    border-top:1px solid #1e293b;
+}
+
+.fade{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 1s ease;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+    font-size:2.5rem;
+}
+
+.about{
+    grid-template-columns:1fr;
+}
+
+.nav-links{
+    display:none;
+}
+}
+</style>
 </head>
 <body>
-<header class="hero">
-    <nav>
-        <h2>MR</h2>
-        <div>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
 
+<nav class="navbar">
+    <div class="logo">MR.</div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
     <div class="hero-content">
-        <h1>Gaddam Mallikarjuna Reddy</h1>
-        <h3>Information Technology Student | AI & ML Enthusiast</h3>
-        <p>Building intelligent solutions with AI, Full Stack Development, Cloud & DevOps.</p>
-        <a class="btn" href="#projects">View My Work</a>
-    </div>
-</header>
+        <h1>Hi, I'm <span>Mallikarjuna Reddy</span></h1>
+        <h3>Information Technology Student | AI/ML Enthusiast | Full Stack Developer</h3>
+        <p>
+            Passionate about Artificial Intelligence, Machine Learning,
+            Cloud Computing, AWS, DevOps and Full Stack Development.
+            Building intelligent solutions that create real-world impact.
+        </p>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        Motivated Information Technology student at MVSR Engineering College with a CGPA of 9.09.
-        Passionate about Artificial Intelligence, Machine Learning, Deep Learning, Data Analytics,
-        Full Stack Development and Cloud Technologies.
-    </p>
-</section>
-
-<section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="grid">
-        <div class="card">Python</div>
-        <div class="card">Java</div>
-        <div class="card">JavaScript</div>
-        <div class="card">React.js</div>
-        <div class="card">Node.js</div>
-        <div class="card">MongoDB</div>
-        <div class="card">SQL</div>
-        <div class="card">Docker</div>
-        <div class="card">Linux</div>
-        <div class="card">Git & GitHub</div>
-        <div class="card">TensorFlow Lite</div>
-        <div class="card">AWS</div>
+        <div class="btn-group">
+            <a href="#projects" class="btn primary">View Projects</a>
+            <a href="#contact" class="btn secondary">Contact Me</a>
+        </div>
     </div>
 </section>
 
-<section id="projects">
-    <h2>Featured Projects</h2>
+<section id="about" class="fade">
+    <h2 class="section-title">About Me</h2>
 
-    <div class="project">
-        <h3>FoodVision – Smart Nutrition Analyzer</h3>
-        <p>AI-powered Android application using TensorFlow Lite for food recognition and nutrition analysis.</p>
-    </div>
+    <div class="about">
+        <div class="profile-card">
+            <div class="profile-circle">MR</div>
+            <h3 style="margin-top:20px;">CGPA: 9.09</h3>
+            <p>MVSR Engineering College</p>
+        </div>
 
-    <div class="project">
-        <h3>Smart Digital Gate Pass Management System</h3>
-        <p>Web-based gate pass approval and monitoring platform with real-time tracking.</p>
-    </div>
+        <div class="about-text">
+            I am a highly motivated Information Technology student pursuing
+            B.E. at MVSR Engineering College. My interests include Artificial
+            Intelligence, Machine Learning, Deep Learning, Data Analytics,
+            Cloud Computing, and Full Stack Development.
 
-    <div class="project">
-        <h3>The Bhagavad Gita: Integrating Ancient Wisdom with Modern Science</h3>
-        <p>Interactive multilingual learning platform with audio recitations and AI-powered features.</p>
+            I enjoy building innovative projects that solve real-world
+            problems and continuously improve my technical and analytical skills.
+        </div>
     </div>
 </section>
 
-<section id="contact">
-    <h2>Let's Connect</h2>
-    <p>Email: gaddammallikarjunareddy2825@gmail.com</p>
-    <p>GitHub: github.com/Mallikarjuna-28</p>
-    <p>LinkedIn: linkedin.com/in/gaddam-mallikarjuna-reddy-4143372b</p>
+<section id="skills" class="fade">
+    <h2 class="section-title">Technical Skills</h2>
+
+    <div class="skills">
+        <div class="skill">Python</div>
+        <div class="skill">Java</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">React.js</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">Express.js</div>
+        <div class="skill">MongoDB</div>
+        <div class="skill">SQL</div>
+        <div class="skill">Docker</div>
+        <div class="skill">Linux</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">TensorFlow Lite</div>
+    </div>
+</section>
+
+<section id="projects" class="fade">
+    <h2 class="section-title">Featured Projects</h2>
+
+    <div class="projects">
+
+        <div class="project-card">
+            <h3>FoodVision – Smart Nutrition Analyzer</h3>
+            <p>
+                AI-powered Android application using TensorFlow Lite that
+                identifies food items from images and provides nutritional
+                analysis including calories, proteins, fats, and carbohydrates.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>Digital Gate Pass Management System</h3>
+            <p>
+                Built a web-based gate pass approval and monitoring system
+                using HTML, CSS, JavaScript, and MySQL with real-time tracking.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>Bhagavad Gita Learning Platform</h3>
+            <p>
+                Interactive multilingual learning platform featuring
+                AI-powered summaries, audio recitations, and visual content.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="certifications" class="fade">
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="certifications">
+        <div class="cert">Python Essentials – Cisco Networking Academy</div>
+        <div class="cert">HTML Training – IIT Bombay</div>
+        <div class="cert">Web Full Stack Developer Internship – EduSkills</div>
+        <div class="cert">PostgreSQL Training – IIT Bombay</div>
+    </div>
+</section>
+
+<section id="contact" class="contact fade">
+    <h2 class="section-title">Let's Connect</h2>
+
+    <p>Open to internships, research opportunities, and collaborations.</p>
+
+    <div class="contact-links">
+        <a href="mailto:gaddammallikarjunareddy2825@gmail.com">Email</a>
+        <a href="https://github.com/Mallikarjuna-28" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/gaddam-mallikarjuna-reddy-4143372b" target="_blank">LinkedIn</a>
+    </div>
 </section>
 
 <footer>
-    <p>© 2026 Gaddam Mallikarjuna Reddy</p>
+    © 2026 Gaddam Mallikarjuna Reddy | Portfolio Website
 </footer>
+
+<script>
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+});
+
+document.querySelectorAll('.fade').forEach(el=>{
+    observer.observe(el);
+});
+
+</script>
+
 </body>
 </html>
